@@ -27,18 +27,18 @@ const ContentSignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
+    setError(null)
     try {
       const response = await login(email, password)
       if (response.status === 200) {
         navigate('/user')
       } else {
-        setError(true)
+        setError('Invalid email or password')
       }
-      setLoading(false)
     } catch (err) {
-      setError(true)
-      setLoading(false)
+      setError('An error occurred')
     }
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const ContentSignIn = () => {
               name="email"
               onChange={handleEmailChange}
               value={email}
+              required
             />
           </div>
           <div className={styles.inputWrapper}>
@@ -80,6 +81,7 @@ const ContentSignIn = () => {
               id="password"
               name="password"
               onChange={handlePasswordChange}
+              required
             />
           </div>
           <div className={styles.inputRemember}>
