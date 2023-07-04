@@ -10,7 +10,7 @@ const Header = () => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
-  const handleLogoutClick = () => {
+  const handleSignOut = () => {
     dispatch(logout())
     navigate('/')
   }
@@ -35,10 +35,7 @@ const Header = () => {
               </span>
               <span>{user.user.firstName}</span>
             </Link>
-            <span
-              className={styles.mainNavItemSignOut}
-              onClick={handleLogoutClick}
-            >
+            <span className={styles.mainNavItemSignOut} onClick={handleSignOut}>
               <span>
                 <i className="fa-sharp fa-solid fa-right-from-bracket" />
               </span>
