@@ -1,11 +1,10 @@
-import React from 'react';
-import styles from './Home.module.scss';
-import moneyIcon from "../../assets/images/icon-money.png";
-import chatIcon from "../../assets/images/icon-chat.png";
-import securityIcon from "../../assets/images/icon-security.png";
+import React from 'react'
+import styles from './Home.module.scss'
+import chatIcon from '../../assets/images/icon-chat.png'
+import moneyIcon from '../../assets/images/icon-money.png'
+import securityIcon from '../../assets/images/icon-security.png'
 
-
-const Home = () =>{
+const Home = () => {
   return (
     <main>
       <div className={styles.hero}>
@@ -14,13 +13,15 @@ const Home = () =>{
           <p className={styles.subtitle}>No fees.</p>
           <p className={styles.subtitle}>No minimum deposit.</p>
           <p className={styles.subtitle}>High interest rates.</p>
-          <p className={styles.subtitle}>Open a savings account with Argent Bank today!</p>
+          <p className={styles.txt}>
+            Open a savings account with Argent Bank today!
+          </p>
         </section>
       </div>
       <section className={styles.features}>
         <h2 className={styles.sronly}>Features</h2>
         <div className={styles.featureItem}>
-          <img src={chatIcon} alt="Chat Icon" className={styles.featureIcon}/>
+          <img src={chatIcon} alt="Chat Icon" className={styles.featureIcon} />
           <h3 className={styles.featureItemTitle}>You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
@@ -28,7 +29,11 @@ const Home = () =>{
           </p>
         </div>
         <div className={styles.featureItem}>
-          <img src={moneyIcon} alt="Money Icon" className={styles.featureIcon}/>
+          <img
+            src={moneyIcon}
+            alt="Money Icon"
+            className={styles.featureIcon}
+          />
           <h3 className={styles.featureItemTitle}>
             More savings means higher rates
           </h3>
@@ -37,7 +42,11 @@ const Home = () =>{
           </p>
         </div>
         <div className={styles.featureItem}>
-          <img src={securityIcon} alt="Security Icon" className={styles.featureIcon} />
+          <img
+            src={securityIcon}
+            alt="Security Icon"
+            className={styles.featureIcon}
+          />
           <h3 className={styles.featureItemTitle}>Security you can trust</h3>
           <p>
             We use top of the line encryption to make sure your data and money
@@ -46,7 +55,7 @@ const Home = () =>{
         </div>
       </section>
     </main>
-  );
+  )
 }
 
-export default Home;
+export default Home
