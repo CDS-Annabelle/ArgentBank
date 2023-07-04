@@ -33,18 +33,17 @@ const Header = () => {
               <span>
                 <i className="fa-solid fa-user" />
               </span>
-              <span>{user.firstName}</span>
+              <span>{user.user.firstName}</span>
             </Link>
-            <Link
+            <span
               className={styles.mainNavItemSignOut}
-              to="/"
               onClick={handleLogoutClick}
             >
               <span>
                 <i className="fa-sharp fa-solid fa-right-from-bracket" />
               </span>
-              <span>Sign out</span>
-            </Link>
+              <span className={styles.signOut}>Sign out</span>
+            </span>
           </>
         ) : (
           <Link className={styles.mainNavItemSignIn} to="/login">

@@ -95,7 +95,16 @@ const loginAction = async (email, password) => {
 }
 
 const logout = () => {
-  removeToken()
+  return async (dispatch) => {
+    removeToken()
+    dispatch(logoutAction())
+  }
+}
+
+const logoutAction = () => {
+  return {
+    type: 'LOGOUT',
+  }
 }
 
 const isLogin = () => {
