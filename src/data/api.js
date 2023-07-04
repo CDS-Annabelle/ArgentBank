@@ -25,7 +25,7 @@ const login = async (email, password) => {
       addToken(token)
       return data
     }
-    throw new Error('Missing or invalid required token')
+    throw new Error('error token')
   } catch (e) {
     return e
   }
