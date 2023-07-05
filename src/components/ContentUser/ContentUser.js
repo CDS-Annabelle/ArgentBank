@@ -16,6 +16,11 @@ const ContentUser = () => {
     loadData()
   }, [])
 
+  useEffect(() => {
+    setFirstName(user.firstName)
+    setLastName(user.lastName)
+  }, [user])
+
   if (!isLogin()) {
     return <div>not authenticated!</div>
   }

@@ -60,6 +60,7 @@ const updateName = async (firstName, lastName) => {
       firstName,
       lastName,
     }
+    updatedUser.userName = firstName
     const token = getToken()
     if (!token) {
       throw new Error('Error')
@@ -79,8 +80,8 @@ const updateName = async (firstName, lastName) => {
     const data = await response.json()
     store.dispatch(setUser(updatedUser))
     return data.body
-  } catch (e) {
-    console.error('Failed to update user name:', e)
+  } catch (error) {
+    console.error('Failed to update user name:', error)
     return false
   }
 }
