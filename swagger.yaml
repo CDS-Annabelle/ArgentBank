@@ -1,0 +1,199 @@
+swagger: '2.0'
+info:
+  description: Swagger - Transactions - details of a transaction.
+  version: 1.0.0
+  title: 'ArgentBank: documentation for details of transaction'
+  termsOfService: http://swagger.io/terms/
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /user/transactions/{month}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Get all transactions for the current month.
+      description: Retrieve all transactions for the logged-in user in the current month.
+      operationId: getTransactionsMonth
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: month
+          description: Current month
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Successfully retrieved user's transactions for the current month.
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  /user/transactions/details/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Get transaction details in another view.
+      description: Retrieve details of a transaction for the logged-in user in another view.
+      operationId: getTransactionDetails
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: transactionId
+          description: Transaction ID
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Successfully retrieved the details of the transaction!
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  /user/transactions/details/{transactionId}/category:
+    patch:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Update an existing transaction's category.
+      description: Update the category of a specific transaction for the logged-in user.
+      operationId: updateTransactionCategory
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: transactionId
+          description: Transaction ID
+          type: integer
+          required: true
+        - in: body
+          name: body
+          description: Updated transaction category
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionCategoryUpdate'
+      responses:
+        '200':
+          description: Successfully updated the transaction's category!
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  /user/transactions/details/{transactionId}/notes:
+    patch:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Update an existing transaction's notes.
+      description: Update the notes of a specific transaction for the logged-in user.
+      operationId: updateTransactionNotes
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: transactionId
+          description: Transaction ID
+          type: integer
+          required: true
+        - in: body
+          name: body
+          description: Updated transaction notes
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionNotesUpdate'
+      responses:
+        '200':
+          description: Successfully updated the transaction's notes!
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Transactions:
+    type: object
+    properties:
+      transactionsId:
+        type: integer
+        format: int64
+      date:
+        type: string
+      description:
+        type: string
+      amount:
+        type: number
+      currency:
+        type: string
+      type:
+        type: string
+      category:
+        type: string
+      notes:
+        type: string
+  TransactionCategoryUpdate:
+    type: object
+    properties:
+      category:
+        type: string
+  TransactionNotesUpdate:
+    type: object
+    properties:
+      notes:
+        type: string
+  Transaction:
+    type: object
+    properties:
+      transactionsId:
+        type: integer
+        format: int64
+      date:
+        type: string
+      description:
+        type: string
+      amount:
+        type: number
+      currency:
+        type: string
+      type:
+        type: string
+      category:
+        type: string
+      notes:
+        type: string

@@ -47,7 +47,7 @@ const Header = () => {
             <span>
               <i className="fa fa-user-circle" />
             </span>
-            <span>Sign in</span>
+            <span className={styles.signIn}>Sign in</span>
           </Link>
         )}
       </div>

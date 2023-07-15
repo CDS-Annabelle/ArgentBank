@@ -30,12 +30,19 @@
   width: 300px;
 }
 
-.mainNavItemSignOut {
-  margin-left: 15px;
-}
+// .mainNavItemSignOut {
+//   margin-left: 15px;
+// }
 
 .signOut {
   font-size: 1.3rem;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.signIn {
+  font-size: 1.3rem;
+  margin-left: 15px;
   cursor: pointer;
 }
 
