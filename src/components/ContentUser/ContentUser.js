@@ -6,8 +6,9 @@ import styles from './ContentUser.module.scss'
 const ContentUser = () => {
   const [editMode, setEditMode] = useState(false)
   const user = useSelector((store) => store.user.user)
-  const [firstName, setFirstName] = useState(user.firstName)
-  const [lastName, setLastName] = useState(user.lastName)
+  const [firstName, setFirstName] = useState(user.firstName || '')
+  const [lastName, setLastName] = useState(user.lastName || '')
+  const [userName, setUserName] = useState(user.userName || '')
 
   useEffect(() => {
     const loadData = async () => {
@@ -19,6 +20,7 @@ const ContentUser = () => {
   useEffect(() => {
     setFirstName(user.firstName)
     setLastName(user.lastName)
+    setUserName(user.userName)
   }, [user])
 
   if (!isLogin()) {
@@ -30,7 +32,7 @@ const ContentUser = () => {
   }
 
   const handleSave = () => {
-    updateName(firstName, lastName)
+    updateName(userName)
     setEditMode(false)
   }
 
@@ -42,19 +44,30 @@ const ContentUser = () => {
             <h1 className={styles.headerProfilName}>Welcome back</h1>
             <div className={styles.formInput}>
               <div className={styles.editProfilInputs}>
+                User name
+                <input
+                  className={styles.profilInputs}
+                  type="text"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+              </div>
+              <div className={styles.editProfilInputs}>
+                First name
                 <input
                   className={styles.profilInputs}
                   type="text"
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  readOnly
                 />
               </div>
               <div className={styles.editProfilInputs}>
+                Last name
                 <input
                   className={styles.profilInputs}
                   type="text"
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  readOnly
                 />
               </div>
             </div>

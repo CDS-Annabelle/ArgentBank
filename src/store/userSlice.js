@@ -8,6 +8,7 @@ export const userSlice = createSlice({
       email: null,
       firstName: null,
       lastName: null,
+      userName: null,
       isLogin: false,
     },
   },
@@ -15,8 +16,9 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user.id = action.payload.id
       state.user.email = action.payload.email
-      state.user.firstName = action.payload.userName
+      state.user.firstName = action.payload.firstName
       state.user.lastName = action.payload.lastName
+      state.user.userName = action.payload.userName
       state.user.isLogin = true
     },
     removeUser: (state) => {

@@ -30,10 +30,6 @@
   width: 300px;
 }
 
-// .mainNavItemSignOut {
-//   margin-left: 15px;
-// }
-
 .signOut {
   font-size: 1.3rem;
   margin-left: 15px;
@@ -67,4 +63,37 @@
 
 .fa-user-circle:before {
   margin-right: 10px;
+}
+
+.userName {
+  margin-left: 10px;
+}
+
+@media all and (max-width: 768px) {
+  .mainNav a {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #2c3e50;
+  }
+
+  .userName {
+    margin-left: 10px;
+  }
+
+  .mainNavLogoImage {
+    max-width: 100%;
+    width: 200px;
+  }
+
+  .signOut {
+    font-size: 1.1rem;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+
+  .signIn {
+    font-size: 1.1rem;
+    margin-left: 15px;
+    cursor: pointer;
+  }
 }

@@ -76,3 +76,73 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+
+@media all and (max-width: 1024px) {
+  .hero {
+    background-image: url('../../assets/images/bank-tree-1024.jpeg');
+    background-position: 0 -150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 450px;
+    position: relative;
+  }
+
+  .content {
+    top: 2.5rem;
+    width: 280px;
+    padding: 0.5rem;
+    right: 2%;
+    border: 1px solid #00bc77;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  .hero {
+    background-image: url('../../assets/images/bank-tree-768.jpeg');
+    background-position: 0 -50px;
+    height: 450px;
+  }
+
+  .content {
+    top: 8.5rem;
+    width: 180px;
+    padding: 0.5rem;
+    right: 2%;
+    border: 1px solid #00bc77;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+
+@media all and (max-width: 468px) {
+  .hero {
+    background-image: url('../../assets/images/bank-tree-468.jpeg');
+    background-position: 0 -50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 250px;
+    position: relative;
+  }
+
+  .content {
+    position: absolute;
+    top: 2rem;
+    width: 240px;
+    background: white;
+    padding: 2rem;
+    right: 15%;
+  }
+}

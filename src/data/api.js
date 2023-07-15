@@ -52,15 +52,14 @@ const userProfile = async () => {
   return data.body
 }
 
-const updateName = async (firstName, lastName) => {
+const updateName = async (userName) => {
   try {
     const user = await userProfile()
     const updatedUser = {
       ...user,
-      firstName,
-      lastName,
+      userName,
     }
-    updatedUser.userName = firstName
+    updatedUser.userName = userName
     const token = getToken()
     if (!token) {
       throw new Error('Error')
