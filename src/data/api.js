@@ -2,9 +2,11 @@ import { addToken, getToken, removeToken, hasToken } from './key'
 import { setUser } from '../store/userSlice'
 import store from '../store'
 
+const BASE_URL = 'http://localhost:3001/api/v1'
+
 const login = async (email, password) => {
   try {
-    const response = await fetch('http://localhost:3001/api/v1/user/login', {
+    const response = await fetch(`${BASE_URL}/user/login`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -15,17 +17,20 @@ const login = async (email, password) => {
         password,
       }),
     })
-    if (!response.ok) {
-      throw new Error('error connexion')
-    }
-    const data = await response.json()
 
+    if (!response.ok) {
+      throw new Error('Failed to login')
+    }
+
+    const data = await response.json()
     const { token } = data.body || {}
+
     if (data.status === 200 && token) {
       addToken(token)
       return data
     }
-    throw new Error('error token')
+
+    throw new Error('Invalid token')
   } catch (error) {
     console.error('Error: ', error)
     throw error
@@ -34,10 +39,12 @@ const login = async (email, password) => {
 
 const userProfile = async () => {
   const token = getToken()
+
   if (!token) {
     throw new Error('Not authenticated')
   }
-  const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+
+  const response = await fetch(`${BASE_URL}/user/profile`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -45,9 +52,11 @@ const userProfile = async () => {
       Authorization: `Bearer ${token}`,
     },
   })
+
   if (!response.ok) {
     throw new Error(response.statusText)
   }
+
   const data = await response.json()
   return data.body
 }
@@ -59,12 +68,14 @@ const updateName = async (userName) => {
       ...user,
       userName,
     }
-    updatedUser.userName = userName
+
     const token = getToken()
+
     if (!token) {
-      throw new Error('Error')
+      throw new Error('Not authenticated')
     }
-    const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+
+    const response = await fetch(`${BASE_URL}/user/profile`, {
       method: 'PUT',
       mode: 'cors',
       headers: {
@@ -73,9 +84,11 @@ const updateName = async (userName) => {
       },
       body: JSON.stringify(updatedUser),
     })
+
     if (!response.ok) {
       throw new Error(response.statusText)
     }
+
     const data = await response.json()
     store.dispatch(setUser(updatedUser))
     return data.body
@@ -89,6 +102,7 @@ const loginAction = async (email, password) => {
   try {
     const response = await login(email, password)
     const user = await userProfile()
+
     store.dispatch(
       setUser({
         id: user.id,
@@ -98,9 +112,10 @@ const loginAction = async (email, password) => {
         isLogin: true,
       })
     )
+
     return response
-  } catch (e) {
-    return e
+  } catch (error) {
+    return error
   }
 }
 
@@ -121,6 +136,7 @@ const isLogin = () => {
   if (hasToken()) {
     return true
   }
+
   logout()
   return false
 }
