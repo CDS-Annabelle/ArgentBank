@@ -9,7 +9,7 @@ basePath: /api/v1
 schemes:
   - http
 paths:
-  /user/transactions/{month}:
+  /user/transactions/:
     get:
       security:
         - Bearer: []
@@ -17,6 +17,31 @@ paths:
         - Transactions
       summary: Get all transactions for the current month.
       description: Retrieve all transactions for the logged-in user in the current month.
+      operationId: getTransactions
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer JWT token
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Successfully retrieved user's transactions for the current month.
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  /user/transactions/{month}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Get all transactions for the selected month.
+      description: Retrieve all transactions for the logged-in user in the selected month.
       operationId: getTransactionsMonth
       parameters:
         - in: header
@@ -26,12 +51,12 @@ paths:
           required: true
         - in: path
           name: month
-          description: Current month
+          description: get transactions for selected month
           type: string
           required: true
       responses:
         '200':
-          description: Successfully retrieved user's transactions for the current month.
+          description: Successfully retrieved user's transactions for the selected month.
           schema:
             $ref: '#/definitions/Transactions'
         '400':
