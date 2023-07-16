@@ -23,7 +23,7 @@ const Header = () => {
           alt="Argent Bank Logo"
           src={logo}
         />
-        <h1 className={styles.sronly}>Argent Bank</h1>
+        <h1 className={styles.srOnly}>Argent Bank</h1>
       </Link>
 
       <div className={styles.NavRight}>

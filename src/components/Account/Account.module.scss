@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 placeholder {
   color: #c6d2db;
 }
@@ -50,6 +52,7 @@ placeholder {
   margin-top: 0;
   margin-bottom: 20px;
 }
+
 .editButton {
   border-color: #00bc77;
   background-color: #00bc77;
@@ -67,7 +70,6 @@ placeholder {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
-  cursor: pointer;
 }
 
 .profilInputs {
@@ -87,38 +89,6 @@ placeholder {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
-}
-
-.editProfil {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-}
-
-.editProfilInputs {
-  width: 365px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
-  margin-bottom: 0rem;
-}
-
-#firstName {
-  border-radius: 5px;
-  border: solid 2px;
-  height: 30px;
-  color: #c6d2db;
-}
-
-#lastName {
-  border-radius: 5px;
-  border: solid 2px;
-  height: 30px;
-  color: #c6d2db;
 }
 
 .applyButtons {
@@ -146,7 +116,7 @@ placeholder {
   color: #6458f5;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 600px) {
   .account {
     flex-direction: row;
     background: #4c4c4c;
@@ -159,5 +129,20 @@ placeholder {
 
   .transactionButton {
     width: 200px;
+  }
+}
+
+@media (max-width: 599px) {
+  .account {
+    flex-direction: column;
+    background: #4c4c4c;
+    color: #fff;
+    text-align: center;
+  }
+
+  .accountAmount {
+    margin: 10px;
+    font-size: 2rem;
+    font-weight: bold;
   }
 }

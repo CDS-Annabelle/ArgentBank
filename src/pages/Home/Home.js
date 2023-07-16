@@ -3,23 +3,14 @@ import styles from './Home.module.scss'
 import chatIcon from '../../assets/images/icon-chat.png'
 import moneyIcon from '../../assets/images/icon-money.png'
 import securityIcon from '../../assets/images/icon-security.png'
+import Hero from '../../components/Hero/Hero'
 
 const Home = () => {
   return (
     <main>
-      <div className={styles.hero}>
-        <section className={styles.content}>
-          <h2 className={styles.srOnly}>Promoted Content</h2>
-          <p className={styles.subtitle}>No fees.</p>
-          <p className={styles.subtitle}>No minimum deposit.</p>
-          <p className={styles.subtitle}>High interest rates.</p>
-          <p className={styles.txt}>
-            Open a savings account with Argent Bank today!
-          </p>
-        </section>
-      </div>
+      <Hero />
       <section className={styles.features}>
-        <h2 className={styles.sronly}>Features</h2>
+        <h2 className={styles.srOnly}>Features</h2>
         <div className={styles.featureItem}>
           <img src={chatIcon} alt="Chat Icon" className={styles.featureIcon} />
           <h3 className={styles.featureItemTitle}>You are our #1 priority</h3>
